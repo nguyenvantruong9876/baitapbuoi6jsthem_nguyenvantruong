@@ -1,25 +1,34 @@
 // bài 3 Tính Giai thừa
-function kiemtra() {
-    for (var i = 2, s = Math.sqrt(num); i <= s; i++) {
-        if (num % i == 0) {
-            return false;
+function kiemtra(num) {
+    var kq = true;
+    
+    if (num < 2) {
+        kq = false;
+    } else if (num == 2) {
+        kq = true;
+    }else if (num % 2 == 0) {
+        kq = false;
+    }else {
+        for (var i = 3; i <=  Math.sqrt(num); i += 2) {
+            if (num % i == 0) {
+                return  false;
+                
+            }
         }
-        return num > 1;
     }
+    return kq;
 }
 function inso() {
     var n = document.getElementById("nhapinso").value;
-    inra = '';
+    var inra = '';
 
     for (var i = 1; i <= n; i++) {
-        if (kiemtra) {
-            inra += '' + i
-        } else {
-            inra;
+        if (kiemtra(i)) {
+            inra += "  " + i;
         }
-
         document.getElementById("txtResultinso").innerHTML = inra;
     }
 
 }
 document.getElementById("btninso").onclick = inso;
+
